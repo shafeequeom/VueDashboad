@@ -33,12 +33,12 @@
       <v-col cols="8">
         <v-card height="405px">
           <v-card-title>
-             <v-btn icon>
+            <v-btn icon>
               <v-icon>mdi-poll</v-icon>
             </v-btn>
             User Visits
             <v-spacer></v-spacer>
-             <v-btn-toggle
+            <v-btn-toggle
               v-model="barType"
               v-on:change="changeBarChart"
               tile
@@ -58,12 +58,9 @@
               </v-btn>
             </v-btn-toggle>
           </v-card-title>
-          
-          <column-chart
-            :data="barData"
-          ></column-chart>
-          <v-card-actions>
-          </v-card-actions>
+          <v-container>
+            <column-chart :data="barData"></column-chart>
+          </v-container>
         </v-card>
       </v-col>
       <v-col cols="4">
@@ -74,9 +71,16 @@
             </v-btn>
             User Stats
             <v-spacer></v-spacer>
-            <v-switch v-model="pieType" v-on:change="changePieChart" label="Anonymous"></v-switch>
-            </v-card-title>
-          <pie-chart :data="pieChart" :colors="['#ef7d0e', '#378d3b', '#e23e3d', '#21b2c6']"></pie-chart>
+            <v-switch
+              v-model="pieType"
+              v-on:change="changePieChart"
+              label="Anonymous"
+            ></v-switch>
+          </v-card-title>
+          <pie-chart
+            :data="pieChart"
+            :colors="['#ef7d0e', '#378d3b', '#e23e3d', '#21b2c6']"
+          ></pie-chart>
         </v-card>
       </v-col>
     </v-row>
@@ -95,7 +99,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item,index) in users" :key="item.id">
+              <tr v-for="(item, index) in users" :key="item.id">
                 <td>{{ item.name }}</td>
                 <td>{{ item.company }}</td>
                 <td>{{ item.job }}</td>
@@ -141,7 +145,10 @@
               ></v-text-field>
             </v-flex>
             <v-flex xs6>
-              <v-text-field placeholder="Job title" v-model="job"></v-text-field>
+              <v-text-field
+                placeholder="Job title"
+                v-model="job"
+              ></v-text-field>
             </v-flex>
             <v-flex xs12>
               <v-text-field
@@ -174,13 +181,13 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-        <v-btn bottom color="pink" dark fab fixed right @click="openDialog">
-          <v-icon>mdi-account-multiple-plus</v-icon>
-        </v-btn>
+    <v-btn bottom color="pink" dark fab fixed right @click="openDialog">
+      <v-icon>mdi-account-multiple-plus</v-icon>
+    </v-btn>
   </v-container>
 </template>
 <script>
-const gradients = [['#222']]
+const gradients = [["#222"]];
 export default {
   data: () => ({
     dialog: false,
@@ -191,71 +198,76 @@ export default {
     users: null,
     barData: null,
     name: "FFFFF",
-    company:null,
-    email:null,
-    job:null,
-    phone:null,
-    notes:null,
-    barType: 'week',
+    company: null,
+    email: null,
+    job: null,
+    phone: null,
+    notes: null,
+    barType: "week",
     pieType: null
-
   }),
-  methods:{
-    viewData(index){
+  methods: {
+    viewData(index) {
       // eslint-disable-next-line no-console
       let data = this.users[index];
-      this.name = data.name
-      this.job = data.job
-      this.company = data.company
-      this.email = data.email
-      this.phone = data.phone
-      this.notes = data.notes
-      this.dialog = true
+      this.name = data.name;
+      this.job = data.job;
+      this.company = data.company;
+      this.email = data.email;
+      this.phone = data.phone;
+      this.notes = data.notes;
+      this.dialog = true;
     },
-    deleteData(index){
-      this.users.splice(index,1);
+    deleteData(index) {
+      this.users.splice(index, 1);
     },
-    changeBarChart(){
-      this.$http.get(process.env.VUE_APP_BASE_URL+'json/'+this.barType+'.json').then(res => {
-        this.barData = res.data;
-      })
+    changeBarChart() {
+      this.$http
+        .get(process.env.VUE_APP_BASE_URL + "json/" + this.barType + ".json")
+        .then(res => {
+          this.barData = res.data;
+        });
     },
-    changePieChart(){
-      // eslint-disable-next-line no-console
-      console.log(JSON.stringify(this.pieType));
-      this.$http.get(process.env.VUE_APP_BASE_URL+'json/pie.json').then(res => {
-        if(this.pieType){
-          this.pieChart = res.data[0];
-        }else{
-          this.pieChart = res.data[1];
-        }
-      })
+    changePieChart() {
+      this.$http
+        .get(process.env.VUE_APP_BASE_URL + "json/pie.json")
+        .then(res => {
+          if (this.pieType) {
+            this.pieChart = res.data[0];
+          } else {
+            this.pieChart = res.data[1];
+          }
+        });
     },
-    openDialog(){
-      this.name = null
-      this.job = null
-      this.company = null
-      this.email = null
-      this.phone = null
-      this.notes = null
-      this.dialog = true
+    openDialog() {
+      this.name = null;
+      this.job = null;
+      this.company = null;
+      this.email = null;
+      this.phone = null;
+      this.notes = null;
+      this.dialog = true;
     }
   },
-  mounted: function(){
-    this.$http.get(process.env.VUE_APP_BASE_URL+'json/week.json').then(res => {
-      this.barData = res.data;
-    })
-    this.$http.get(process.env.VUE_APP_BASE_URL+'json/pie.json').then(res => {
+  mounted: function() {
+    this.$http
+      .get(process.env.VUE_APP_BASE_URL + "json/week.json")
+      .then(res => {
+        this.barData = res.data;
+      });
+    this.$http.get(process.env.VUE_APP_BASE_URL + "json/pie.json").then(res => {
       this.pieChart = res.data[1];
-    })
-    this.$http.get(process.env.VUE_APP_BASE_URL+'json/stats.json').then(res => {
-      this.items = res.data;
-    })
-    this.$http.get(process.env.VUE_APP_BASE_URL+'json/users.json').then(res => {
-      this.users = res.data;
-      // eslint-disable-next-line no-console
-      console.log(JSON.stringify(this.users));
-    })
+    });
+    this.$http
+      .get(process.env.VUE_APP_BASE_URL + "json/stats.json")
+      .then(res => {
+        this.items = res.data;
+      });
+    this.$http
+      .get(process.env.VUE_APP_BASE_URL + "json/users.json")
+      .then(res => {
+        this.users = res.data;
+      });
   }
 };
 </script>
