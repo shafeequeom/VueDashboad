@@ -1,4 +1,4 @@
-# mv
+# Vue JS User Dashboard
 
 ## Project setup
 ```
