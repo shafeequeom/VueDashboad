@@ -2,7 +2,8 @@
 
 ## Demo
 ```
-https://shafeequeom.github.io/VueDashboad/#/
+Demo [VueDashboard](https://shafeequeom.github.io/VueDashboad)
+
 ```
 
 ## Run Project Locally
