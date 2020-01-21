@@ -58,9 +58,9 @@
               </v-btn>
             </v-btn-toggle>
           </v-card-title>
-          <v-container>
-            <column-chart :data="barData"></column-chart>
-          </v-container>
+
+          <column-chart :data="barData"></column-chart>
+          <v-card-actions> </v-card-actions>
         </v-card>
       </v-col>
       <v-col cols="4">
@@ -184,6 +184,22 @@
     <v-btn bottom color="pink" dark fab fixed right @click="openDialog">
       <v-icon>mdi-account-multiple-plus</v-icon>
     </v-btn>
+    <v-dialog v-model="deleter" max-width="290">
+      <v-card>
+        <v-card-title class="headline"
+          >Are you sure you want to delete?</v-card-title
+        >
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="green darken-1" text @click="deleter = false"
+            >No</v-btn
+          >
+          <v-btn color="red darken-1" text @click="deleteConfirm"
+            >Yes</v-btn
+          >
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 <script>
@@ -204,7 +220,9 @@ export default {
     phone: null,
     notes: null,
     barType: "week",
-    pieType: null
+    pieType: null,
+    deleter: false,
+    deleteIndex: null
   }),
   methods: {
     viewData(index) {
@@ -219,7 +237,12 @@ export default {
       this.dialog = true;
     },
     deleteData(index) {
-      this.users.splice(index, 1);
+      this.deleteIndex = index
+      this.deleter = true;
+    },
+    deleteConfirm() {
+      this.users.splice(this.deleteIndex, 1);
+      this.deleter = false;
     },
     changeBarChart() {
       this.$http
@@ -229,6 +252,8 @@ export default {
         });
     },
     changePieChart() {
+      // eslint-disable-next-line no-console
+      console.log(JSON.stringify(this.pieType));
       this.$http
         .get(process.env.VUE_APP_BASE_URL + "json/pie.json")
         .then(res => {
