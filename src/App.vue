@@ -72,7 +72,7 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { icon: "mdi-view-dashboard", text: "Dashboard" }
+      { icon: "mdi-view-dashboard", text: "Dashboard" },
     ]
   })
 };
