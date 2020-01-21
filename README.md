@@ -1,10 +1,7 @@
 # Vue JS User Dashboard
 
 ## Demo
-```
 Demo [VueDashboard](https://shafeequeom.github.io/VueDashboad)
-
-```
 
 ## Run Project Locally
 ```
