@@ -1,15 +1,14 @@
 # Vue JS User Dashboard
 
 ## Demo
-```
-https://shafeequeom.github.io/VueDashboad/#/
-```
+Demo [VueDashboard](https://shafeequeom.github.io/VueDashboad)
 
 ## Run Project Locally
 ```
 1. git clone https://github.com/shafeequeom/VueDashboad.git
-2. npm i
-3. npm run serve
+2. cd VueDashboard
+3. npm i
+4. npm run serve
 ```
 
 ## Project setup
