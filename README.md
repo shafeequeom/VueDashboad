@@ -19,6 +19,7 @@ Demo [VueDashboard](https://shafeequeom.github.io/VueDashboad)
 5. git add dist
 6. git commit -m "Title Change commit"
 7. git subtree push --prefix dist origin gh-pages
+Note:-- checkout git gh_pages branch
 ```
 ## Project setup
 ```
