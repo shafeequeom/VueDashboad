@@ -2,6 +2,18 @@
 
 ## Demo
 Demo [VueDashboard](https://shafeequeom.github.io/VueDashboad)
+```
+Login Page: 
+Valid Email and Any password will take you to dashboard. 
+Both the fields are mandatory for login
+Invalid email will promt error message.
+```
+```
+Dashboard: 
+Dashboard ccontains User statics, Graps and User Table
+Graphs have multiple views like weekly, monthly or yearly in User visit graph
+Table contains user details. User can edit or delete user details.
+```
 
 ## Run Project Locally
 ```
