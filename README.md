@@ -1,7 +1,7 @@
 # Vue JS User Dashboard
 
 ## Demo
-Demo [VueDashboard](https://shafeequeom.github.io/VueDashboad)
+Please click [here](https://shafeequeom.github.io/VueDashboad) to view [demo](https://shafeequeom.github.io/VueDashboad)
 ```
 Login Page: 
 Valid Email and Any password will take you to dashboard. 
