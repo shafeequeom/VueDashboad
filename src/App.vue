@@ -44,6 +44,14 @@
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <span class="hidden-sm-and-down">User Dashboard</span>
       </v-toolbar-title>
+      <v-text-field
+        flat
+        solo-inverted
+        hide-details
+        prepend-inner-icon="mdi-magnify"
+        label="Search"
+        class="hidden-sm-and-down"
+      ></v-text-field>
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon>mdi-apps</v-icon>
@@ -73,6 +81,8 @@ export default {
     drawer: null,
     items: [
       { icon: "mdi-view-dashboard", text: "Dashboard" },
+      { icon: "mdi-contact-phone", text: "Contacts" },
+      { icon: "mdi-chat", text: "Chats" }
     ]
   })
 };
